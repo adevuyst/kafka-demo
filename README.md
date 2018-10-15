@@ -9,3 +9,11 @@ This repository captures a kafka demo and scripts to:
 ## Libraries
 This demo is going to depend on the confluent kafka python libraries.  They are the fastest and best supported of the available python libraries at this time and instructions for installation and dependencies can be found [here](
 https://github.com/confluentinc/confluent-kafka-python)
+
+### Installing the confluent kafka libs:
+```bash
+$ pip install confluent-kafka
+$ pip install confluent-kafka[avro]
+```
+
+
