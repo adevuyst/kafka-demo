@@ -16,4 +16,10 @@ $ pip install confluent-kafka
 $ pip install confluent-kafka[avro]
 ```
 
+## Avro and Why
+[Avro](https://avro.apache.org/) is a data serialization system that provide a compact, fast, binary data format that can be sent over the wire. It enables schema evolution without many of the draw backs of other formats (csv, json, xml).  While many example for kafka have been done sending messages composed of strings, json and csv data, to make this closer to a real world application we are going to use avro as it's much more robust for non-trivial use cases.
+
+## Schema Registry
+
+
 
