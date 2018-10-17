@@ -25,4 +25,8 @@ In an effort to coordinate evolving schema versions, to protect against malforme
 * Required changes to producers and consumers otherwise no new data could be processed
 * Old messages could no longer be processed by anyone that was upgraded to the new schema
 * New messages could not be processed by producers or consumers that were not updated
+The schema registry is provided as part of the confluent platform and more information on it can be found [here](https://docs.confluent.io/current/schema-registry/docs/index.html)
+For our purposes we are going to generate an avro schema, upload that schema to the registry and then begin producing and consuming data. Evolving the schema to a new version will be handled potentially in a future entry.
+
+## Creating an Avro Schema
 
