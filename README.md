@@ -29,4 +29,5 @@ The schema registry is provided as part of the confluent platform and more infor
 For our purposes we are going to generate an avro schema, upload that schema to the registry and then begin producing and consuming data. Evolving the schema to a new version will be handled potentially in a future entry.
 
 ## Creating an Avro Schema
+Avro schemas are defined in json files and for schema definition purposes they tend to end in .avsc.
 
