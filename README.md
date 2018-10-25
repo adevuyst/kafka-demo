@@ -36,13 +36,20 @@ To keep things simple we will only be defining a schema for the value:
 {
      "type": "record",
      "namespace": "com.example",
-     "name": "user",
+     "name": "click",
      "version": 1,
      "fields": [
        { "name": "id", "type": "string" },
-       { "name": "name", "type": "string" },
-       { "name": "first_name", "type": "string" },
-       { "name": "last_name", "type": "string" }
+       { "name": "impression_id", "type": "string" },
+       { "name": "creative_id", "type": "string" },
+       { "name": "placement_id", "type": "string" },
+       { "name": "timestamp", "type": 
+          { "type": "long", "logicalType": "timestamp-millis" } 
+       },
+       { "name": "user_agent", "type": ["string", "null"] },
+       { "name": "ip", "type": ["string", "null"] },
+       { "name": "referrer", "type": ["string", "null"] },
+       { "name": "cost", "type": "float" },
      ]
 }
 ```
