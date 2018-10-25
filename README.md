@@ -31,6 +31,8 @@ For our purposes we are going to generate an avro schema, upload that schema to 
 ## Creating an Avro Schema
 Avro schemas are defined in json files and for schema definition purposes they tend to end in .avsc, but otherwise I am not aware of any naming conventions for files.  Kafka used to reason about the world in terms of messages and offsets.  This has evolved to be in terms of keys and values you may want to define a schema for both.
 
+We are going to create a schema file: ```clicks_v1.avsc```
+
 To keep things simple we will only be defining a schema for the value:
 ```json
 {
