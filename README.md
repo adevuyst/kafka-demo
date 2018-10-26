@@ -28,7 +28,7 @@ In an effort to coordinate evolving schema versions, to protect against malforme
 The schema registry is provided as part of the confluent platform and more information on it can be found [here](https://docs.confluent.io/current/schema-registry/docs/index.html)
 For our purposes we are going to generate an avro schema, upload that schema to the registry and then begin producing and consuming data. Evolving the schema to a new version will be handled potentially in a future entry.
 
-## Creating an Avro Schema
+## Creating an Avro Schema File
 Avro schemas are defined in json files and for schema definition purposes they tend to end in .avsc, but otherwise I am not aware of any naming conventions for files.  Kafka used to reason about the world in terms of messages and offsets.  This has evolved to be in terms of keys and values you may want to define a schema for both.
 
 We are going to create a schema file: ```click_v1.avsc```
@@ -56,3 +56,6 @@ To keep things simple we will only be defining a schema for the value:
 }
 ```
 
+## Adding a Schema to the Schema Registry
+The schema registry operates a RESTful api that is defined [here]().
+Topics names in Kafka should follow this convention ```{subject}-{format}```, where subject would be something like ```clicks``` and the format would indicate what data format the data is in, so avro, protobuf, json, etc.  For our purposes we are going to be using avro, so our topic would be ```clicks-avro```.  Correspondingly, schemas also have a naming convention.  The convetion for schemas is ```{topic}-{key|value}```.  Based on our ```clicks-avro``` and the fact we are only providing a schema for values our schema name will be ```clicks-avro-value```.
