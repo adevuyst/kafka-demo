@@ -16,10 +16,10 @@ $ pip install confluent-kafka
 $ pip install confluent-kafka[avro]
 ```
 
-## Avro and Why
+## Avro
 [Avro](https://avro.apache.org/) is a data serialization system that provide a compact, fast, binary data format that can be sent over the wire. It enables schema evolution without many of the draw backs of other formats (csv, json, xml).  While many example for kafka have been done sending messages composed of strings, json and csv data, to make this closer to a real world application we are going to use avro as it's much more robust for non-trivial use cases.
 
-## Creating an Avro Schema File
+### Creating an Avro Schema File
 Avro schemas are defined in json files and for schema definition purposes they tend to end in .avsc, but otherwise I am not aware of any naming conventions for files.  Kafka used to reason about the world in terms of messages and offsets.  This has evolved to be in terms of keys and values you may want to define a schema for both.
 
 We are going to create a schema file: ```click_v1.avsc```
@@ -62,4 +62,4 @@ Topics names in Kafka should follow this convention ```{subject}-{format}```, wh
 ### The RESTful Schema Registry API
 The schema registry operates a RESTful api that is defined [here](https://docs.confluent.io/current/schema-registry/docs/api.html).
 
-## Adding a Schema to the Schema Registry
+### Adding a Schema to the Schema Registry
