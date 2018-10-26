@@ -57,5 +57,8 @@ To keep things simple we will only be defining a schema for the value:
 ```
 
 ## Adding a Schema to the Schema Registry
-The schema registry operates a RESTful api that is defined [here]().
+### Schema Naming Conventions
 Topics names in Kafka should follow this convention ```{subject}-{format}```, where subject would be something like ```clicks``` and the format would indicate what data format the data is in, so avro, protobuf, json, etc.  For our purposes we are going to be using avro, so our topic would be ```clicks-avro```.  Correspondingly, schemas also have a naming convention.  The convetion for schemas is ```{topic}-{key|value}```.  Based on our ```clicks-avro``` and the fact we are only providing a schema for values our schema name will be ```clicks-avro-value```.
+### The RESTful Schema Registry API
+The schema registry operates a RESTful api that is defined [here](https://docs.confluent.io/current/schema-registry/docs/api.html).
+
