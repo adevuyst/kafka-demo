@@ -60,9 +60,9 @@ For our purposes we are going to generate an avro schema, upload that schema to 
 Topics names in Kafka should follow this convention ```{subject}-{format}```, where subject would be something like ```clicks``` and the format would indicate what data format the data is in, so avro, protobuf, json, etc.  For our purposes we are going to be using avro, so our topic would be ```clicks-avro```.  Correspondingly, schemas also have a naming convention.  The convetion for schemas is ```{topic}-{key|value}```.  Based on our ```clicks-avro``` and the fact we are only providing a schema for values our schema name will be ```clicks-avro-value```.  In the schema registry an entry for a schema is called a ```subject```.  
 
 ### The RESTful Schema Registry API
-The schema registry operates a RESTful api that is defined [here](https://docs.confluent.io/current/schema-registry/docs/api.html).  
+The schema registry operates a RESTful api that is defined [here](https://docs.confluent.io/current/schema-registry/docs/api.html). 
+
 #### Get a List of Subjects
 The rest api allows you to query for ```subjects```...listing the subjects in the schema registry can be accomplished by issuing a ```GET``` request to ```/subjects``` as shown [here](https://docs.confluent.io/current/schema-registry/docs/api.html#get--subjects)
-
 
 ### Adding a Schema to the Schema Registry
