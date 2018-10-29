@@ -62,10 +62,12 @@ Topics names in Kafka should follow this convention ```{subject}-{format}```, wh
 ### The RESTful Schema Registry API
 The schema registry operates a RESTful api that is defined [here](https://docs.confluent.io/current/schema-registry/docs/api.html). 
 
+#### Adding a Schema to the Schema Registry
+To add a schema a ```POST``` request needs to be made as outlined [here](https://docs.confluent.io/current/schema-registry/docs/api.html#post--subjects-(string-%20subject)-versions). Generally you post your json schema to the end point like this ```/subjects/(string: subject)/versions```.
+
+
 #### Get a List of Subjects
 The rest api allows you to query for ```subjects```...listing the subjects in the schema registry can be accomplished by issuing a ```GET``` request to ```/subjects``` as shown [here](https://docs.confluent.io/current/schema-registry/docs/api.html#get--subjects)
 
 #### Get a List of Versions for a Subject
 The rest api allows you to query for the available versions of a specific subject using a get request as shown [here](https://docs.confluent.io/current/schema-registry/docs/api.html#get--subjects-(string-%20subject)-versions)
-
-#### Adding a Schema to the Schema Registry
