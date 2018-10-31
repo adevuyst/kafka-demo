@@ -65,6 +65,14 @@ The schema registry operates a RESTful api that is defined [here](https://docs.c
 #### Adding a Schema to the Schema Registry
 To add a schema a ```POST``` request needs to be made as outlined [here](https://docs.confluent.io/current/schema-registry/docs/api.html#post--subjects-(string-%20subject)-versions). Generally you post your json schema to the end point like this ```/subjects/(string: subject)/versions```.
 
+Based on the schema above an add is done like this:
+```bash
+curl -X POST -H "Content-Type: application/vnd.schemaregistry.v1+json" \
+  --data '{ "schema": "{\r\n     \"type\": \"record\",\r\n     \"namespace\": \"com.example\",\r\n     \"name\": \"click\",\r\n     \"fields\": [\r\n       { \"name\": \"id\", \"type\": \"string\" },\r\n       { \"name\": \"impression_id\", \"type\": \"string\" },\r\n       { \"name\": \"creative_id\", \"type\": \"string\" },\r\n       { \"name\": \"placement_id\", \"type\": \"string\" },\r\n       { \"name\": \"timestamp\", \"type\": \r\n          { \"type\": \"long\", \"logicalType\": \"timestamp-millis\" } \r\n       },\r\n       { \"name\": \"user_agent\", \"type\": [\"string\", \"null\"] },\r\n       { \"name\": \"ip\", \"type\": [\"string\", \"null\"] },\r\n       { \"name\": \"referrer\", \"type\": [\"string\", \"null\"] },\r\n       { \"name\": \"cost\", \"type\": \"float\" }\r\n     ]\r\n}" }' \
+  http://localhost:8081/subjects/clicks-avro-value/versions
+```
+Note that the json has the double quote (```"```) characters escaped and has replaced new line chacters.  Getting the json string properly escaped can be a tedious task, so you can use an only tool like the one [here](https://www.freeformatter.com/json-escape.html) to do it for you.
+
 
 #### Get a List of Subjects
 The rest api allows you to query for ```subjects```...listing the subjects in the schema registry can be accomplished by issuing a ```GET``` request to ```/subjects``` as shown [here](https://docs.confluent.io/current/schema-registry/docs/api.html#get--subjects)
