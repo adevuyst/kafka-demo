@@ -10,6 +10,8 @@ This repository captures a kafka demo and scripts to:
 This demo is going to depend on the confluent kafka python libraries.  They are the fastest and best supported of the available python libraries at this time and instructions for installation and dependencies can be found [here](
 https://github.com/confluentinc/confluent-kafka-python)
 
+You may also want to try "kafkacat" from github [here](https://github.com/edenhill/kafkacat) which can be done using apt, brew, etc.
+
 ### Installing the confluent kafka libs:
 ```bash
 $ pip install confluent-kafka
