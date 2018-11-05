@@ -77,13 +77,13 @@ Note that the json has the double quote (```"```) characters escaped and has rep
 #### Get a List of Subjects
 The rest api allows you to query for ```subjects```...listing the subjects in the schema registry can be accomplished by issuing a ```GET``` request to ```/subjects``` as shown [here](https://docs.confluent.io/current/schema-registry/docs/api.html#get--subjects)
 ```bash
-$curl http://localhost:8081/subjects/
+$ curl http://localhost:8081/subjects/
 ["clicks-avro-value"]%
 ```
 
 #### Get a List of Versions for a Subject
 The rest api allows you to query for the available versions of a specific subject using a get request as shown [here](https://docs.confluent.io/current/schema-registry/docs/api.html#get--subjects-(string-%20subject)-versions)
 ```bash
-$curl http://localhost:8081/subjects/clicks-avro-value/versions
+$ curl http://localhost:8081/subjects/clicks-avro-value/versions
 [1]%
 ```
