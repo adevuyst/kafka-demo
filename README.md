@@ -10,13 +10,13 @@ This repository captures a kafka demo and scripts to:
 This demo is going to depend on the confluent kafka python libraries.  They are the fastest and best supported of the available python libraries at this time and instructions for installation and dependencies can be found [here](
 https://github.com/confluentinc/confluent-kafka-python)
 
-You may also want to try "kafkacat" from github [here](https://github.com/edenhill/kafkacat) which can be done using apt, brew, etc.
-
 ### Installing the confluent kafka libs:
 ```bash
 $ pip install confluent-kafka
 $ pip install confluent-kafka[avro]
 ```
+
+You may also want to try "kafkacat" from github [here](https://github.com/edenhill/kafkacat) which can be done using apt, brew, etc.
 
 ## Avro
 [Avro](https://avro.apache.org/) is a data serialization system that provide a compact, fast, binary data format that can be sent over the wire. It enables schema evolution without many of the draw backs of other formats (csv, json, xml).  While many example for kafka have been done sending messages composed of strings, json and csv data, to make this closer to a real world application we are going to use avro as it's much more robust for non-trivial use cases.
