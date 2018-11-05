@@ -92,3 +92,11 @@ Getting a specific schema version:
 $ curl http://localhost:8081/subjects/clicks-avro-value/versions/1
 {"subject":"clicks-avro-value","version":1,"id":1,"schema":"{\"type\":\"record\",\"name\":\"click\",\"namespace\":\"com.example\",\"fields\":[{\"name\":\"id\",\"type\":\"string\"},{\"name\":\"impression_id\",\"type\":\"string\"},{\"name\":\"creative_id\",\"type\":\"string\"},{\"name\":\"placement_id\",\"type\":\"string\"},{\"name\":\"timestamp\",\"type\":{\"type\":\"long\",\"logicalType\":\"timestamp-millis\"}},{\"name\":\"user_agent\",\"type\":[\"string\",\"null\"]},{\"name\":\"ip\",\"type\":[\"string\",\"null\"]},{\"name\":\"referrer\",\"type\":[\"string\",\"null\"]},{\"name\":\"costs\",\"type\":\"float\"}]}"}%
 ```
+
+Create the relevant kafka topic:
+```bash
+$ vagrant ssh
+vagrant@vagrant-ubuntu-trusty-64:~$ kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 2 --topic clicks-avro
+Created topic "clicks-avro".
+```
+
