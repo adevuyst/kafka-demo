@@ -100,3 +100,21 @@ vagrant@vagrant-ubuntu-trusty-64:~$ kafka-topics --create --zookeeper localhost:
 Created topic "clicks-avro".
 ```
 
+#### Verify topic creation:
+```bash
+kafkacat -L -b localhost
+Metadata for all topics (from broker -1: localhost:9092/bootstrap):
+ 1 brokers:
+  broker 0 at vagrant-ubuntu-trusty-64:9092
+ 4 topics:
+  topic "__confluent.support.metrics" with 1 partitions:
+    partition 0, leader 0, replicas: 0, isrs: 0
+  topic "_schemas" with 1 partitions:
+    partition 0, leader 0, replicas: 0, isrs: 0
+  topic "clicks-avro" with 2 partitions:
+    partition 0, leader 0, replicas: 0, isrs: 0
+    partition 1, leader 0, replicas: 0, isrs: 0
+  topic "test-topic" with 1 partitions:
+    partition 0, leader 0, replicas: 0, isrs: 0
+```
+
