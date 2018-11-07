@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""
+    Avro Kafka Producer. (Producer that writes click avro msgs to a local broker as a demo)
+    Every time you make a new line it will generate a new click msg and pub to kafka
+"""
 
 from datetime import datetime
 import os
