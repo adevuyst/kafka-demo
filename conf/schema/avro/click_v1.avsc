@@ -14,6 +14,6 @@
        { "name": "user_agent", "type": ["string", "null"] },
        { "name": "ip", "type": ["string", "null"] },
        { "name": "referrer", "type": ["string", "null"] },
-       { "name": "cost", "type": "float" },
+       { "name": "cost", "type": "float" }
      ]
 }
