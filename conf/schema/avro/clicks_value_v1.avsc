@@ -1,7 +1,7 @@
 {
      "type": "record",
      "namespace": "com.example",
-     "name": "click",
+     "name": "clicks",
      "version": 1,
      "fields": [
        { "name": "id", "type": "string" },

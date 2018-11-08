@@ -18,9 +18,9 @@ from confluent_kafka.avro import AvroProducer
 if __name__ == '__main__':
     # Producer configuration
     # See https://github.com/edenhill/librdkafka/blob/master/CONFIGURATION.md
-    conf = {'bootstrap.servers': 'localhost:9092',
+    conf = {'bootstrap.servers': 'vagrant-ubuntu-trusty-64:9092',
             'acks': 'all',
-            'schema.registry.url': 'http://localhost:8081',
+            'schema.registry.url': 'http://vagrant-ubuntu-trusty-64:8081',
             'compression.codec': 'gzip',
             }
 
@@ -29,10 +29,14 @@ if __name__ == '__main__':
 
     # Only defining a value schema as we don't care about keys right now
     my_path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-    value_schema = avro.load(os.path.join(my_path, 'conf/schema/avro/click_v1.avsc'))
+    key_schema = avro.load(os.path.join(my_path, 'conf/schema/avro/clicks_key_v1.avsc'))
+    sys.stdout.write('%% Loaded key_schema:\n %s \n' % key_schema)
+
+    value_schema = avro.load(os.path.join(my_path, 'conf/schema/avro/clicks_value_v1.avsc'))
+    sys.stdout.write('%% Loaded value_schema:\n %s \n' % value_schema)
 
     # Create Producer instance
-    avro_producer = AvroProducer(conf, default_value_schema=value_schema)
+    avro_producer = AvroProducer(conf, default_key_schema=key_schema, default_value_schema=value_schema)
 
     # Optional per-message delivery callback (triggered by poll() or flush())
     # when a message has been successfully delivered or permanently
@@ -67,22 +71,25 @@ if __name__ == '__main__':
     ]
 
     # Read lines from stdin, produce each line to Kafka
-    for line in sys.stdin:
+    for i in range(10):
         try:
+            click_id = str(uuid.uuid4())
+
+            click_key = {'id': click_id}
 
             # Produce line (without newline)
-            click_obj = {
-                'id': str(uuid.uuid4()),
+            click_value = {
+                'id': click_id,
                 'impression_id': str(uuid.uuid4()),
                 'creative_id': str(uuid.uuid4())[:8],
                 'placement_id': str(uuid.uuid4())[:8],
-                'timestamp': round(datetime.datetime.utcnow().timestamp() * 1000),
+                'timestamp': int(float(datetime.utcnow().strftime('%s.%f')) * 1000),
                 'user_agent': str(random.choice(agents)),
-                'ip': str('.'.join([str(randint(0,255)) for x in range(4)])),
+                'ip': str('.'.join([str(random.randint(0,255)) for x in range(4)])),
                 'referrer': str(random.choice(referrers)),
                 'cost': random.uniform(0.05, 1.00)
             }
-            avro_producer.produce(topic, line.rstrip(), callback=delivery_callback)
+            avro_producer.produce(topic=topic, key=click_key, value=click_value, callback=delivery_callback)
 
         except BufferError:
             sys.stderr.write('%% Local producer queue is full (%d messages awaiting delivery): try again\n' %
