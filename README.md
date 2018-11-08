@@ -44,7 +44,7 @@ To keep things simple we will only be defining a schema for the value:
        { "name": "user_agent", "type": ["string", "null"] },
        { "name": "ip", "type": ["string", "null"] },
        { "name": "referrer", "type": ["string", "null"] },
-       { "name": "cost", "type": "float" },
+       { "name": "cost", "type": "float" }
      ]
 }
 ```
