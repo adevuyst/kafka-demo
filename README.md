@@ -98,8 +98,8 @@ $ curl http://localhost:8081/subjects/clicks-avro-value/versions/1
 #### Create the relevant kafka topic:
 ```bash
 $ vagrant ssh
-vagrant@vagrant-ubuntu-trusty-64:~$ kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 2 --topic clicks-avro
-Created topic "clicks-avro".
+vagrant@vagrant-ubuntu-trusty-64:~$ kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 2 --topic clicks
+Created topic "clicks".
 ```
 
 #### Verify topic creation:
@@ -113,7 +113,7 @@ Metadata for all topics (from broker -1: localhost:9092/bootstrap):
     partition 0, leader 0, replicas: 0, isrs: 0
   topic "_schemas" with 1 partitions:
     partition 0, leader 0, replicas: 0, isrs: 0
-  topic "clicks-avro" with 2 partitions:
+  topic "clicks" with 2 partitions:
     partition 0, leader 0, replicas: 0, isrs: 0
     partition 1, leader 0, replicas: 0, isrs: 0
   topic "test-topic" with 1 partitions:
