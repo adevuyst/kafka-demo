@@ -25,7 +25,7 @@ if __name__ == '__main__':
             }
 
     # Kafka Topic Name
-    topic = 'clicks-avro'
+    topic = 'clicks'
 
     # Only defining a value schema as we don't care about keys right now
     my_path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
@@ -83,12 +83,13 @@ if __name__ == '__main__':
                 'impression_id': str(uuid.uuid4()),
                 'creative_id': str(uuid.uuid4())[:8],
                 'placement_id': str(uuid.uuid4())[:8],
-                'timestamp': int(float(datetime.utcnow().strftime('%s.%f')) * 1000),
+                'timestamp': long(float(datetime.utcnow().strftime('%s.%f')) * 1000),
                 'user_agent': str(random.choice(agents)),
                 'ip': str('.'.join([str(random.randint(0,255)) for x in range(4)])),
                 'referrer': str(random.choice(referrers)),
                 'cost': random.uniform(0.05, 1.00)
             }
+
             avro_producer.produce(topic=topic, key=click_key, value=click_value, callback=delivery_callback)
 
         except BufferError:
